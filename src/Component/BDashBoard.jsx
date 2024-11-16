@@ -2,22 +2,26 @@ import React from "react";
 import { useSelector } from "react-redux";
 import Card from "./Card";
 import Carousel from "./Carousel";
+import { useAuth0 } from "@auth0/auth0-react";
 
 export default function BDashBoard() {
   const dashBoardDetails = useSelector(
     (state) => state.dashBoard.dashBoardDetails
   );
+  const { user, isAuthenticated, isLoading } = useAuth0();
+  console.log(user, "user");
   const events = useSelector((state) => state.dashBoard.Events);
   const notifications = useSelector((state) => state.dashBoard.Notifications);
   const videoLibrary = useSelector((state) => state.dashBoard.VideoLibrary);
-
+  const notificationIsOpen = useSelector(
+    (state) => state.dashBoard.Notifications.isopen
+  );
   console.log(events, notifications, videoLibrary);
   const mostUsedItems = dashBoardDetails.Myfavourites;
   const financeItems = dashBoardDetails.Finance;
   const facilitiesItems = dashBoardDetails.Facilities_Managment;
   const humanResources = dashBoardDetails.Human_Resource;
   const videoCategoryItems = dashBoardDetails.videoCategory || [];
-
   return (
     <div
       style={{
@@ -51,7 +55,7 @@ export default function BDashBoard() {
           >
             {/* Circle with initials */}
             <div
-              className="d-flex justify-content-center align-items-center text-white bg-primary rounded-circle"
+              className="d-flex justify-content-center align-items-center text-white  rounded-circle"
               style={{
                 width: "80px", // Default width for small screens
                 height: "80px", // Default height for small screens
@@ -60,13 +64,25 @@ export default function BDashBoard() {
                 marginRight: "15px",
               }}
             >
-              <h1>JD</h1>
+              {isLoading ? (
+                <span className="loader"></span>
+              ) : (
+                <img
+                  className="rounded-circle"
+                  style={{
+                    width: "100%",
+                    height: "100%",
+                    overflow: "hidden",
+                  }}
+                  src={user.picture}
+                />
+              )}
             </div>
 
             {/* Rest of the content */}
             <div>
               <h1 className="text-white text-start">
-                Hello John, Goodmorning!
+                Hello {user?.name}, Goodmorning!
               </h1>
               <p className="text-white text-start">
                 Your personalized dashboard. Manage your work seamlessly.
@@ -215,6 +231,7 @@ export default function BDashBoard() {
               style={{
                 display: "flex",
                 gap: "10px",
+                overflowX: "auto",
                 flexDirection: "column",
                 marginTop: "20px",
                 justifyContent: "start",
@@ -226,7 +243,9 @@ export default function BDashBoard() {
               <div
                 style={{
                   display: "flex",
-                  gap: "20px",
+                  width: "100%",
+                  gap: "10px",
+                  flexWrap: "wrap",
                 }}
                 className="latestNewsWrapper"
               >
@@ -236,9 +255,9 @@ export default function BDashBoard() {
                   description={events.Content}
                 />
                 <Carousel
-                  title={notifications.Title}
-                  images={notifications.image}
-                  description={notifications.Content}
+                  title={events.Title}
+                  images={events.image}
+                  description={events.Content}
                 />
               </div>
             </div>
@@ -247,30 +266,33 @@ export default function BDashBoard() {
         </div>
       </div>
       {/* notifications */}
-      <div className="container-custom container-custom-md">
-        <div className="mb-2">
-          <Carousel
-            title={events.Title}
-            images={events.image}
-            description={events.Content}
-          />
-        </div>
+      {notificationIsOpen && (
+        <div className="container-custom container-custom-md">
+          <div className="mb-2">
+            <Carousel
+              title={events.Title}
+              images={events.image}
+              description={events.Content}
+            />
+          </div>
 
-        <div className="mb-2">
-          <Carousel
-            title={notifications.Title}
-            images={notifications.image}
-            description={notifications.Content}
-          />
+          <div className="mb-2">
+            <Carousel
+              title={notifications.Title}
+              images={notifications.image}
+              description={notifications.Content}
+            />
+          </div>
+          <div className="mb-2">
+            <Carousel
+              title={videoLibrary.Title}
+              images={videoLibrary.video}
+              description={videoLibrary.Content}
+              isvideos={true}
+            />
+          </div>
         </div>
-        <div className="mb-2">
-          <Carousel
-            title={videoLibrary.Title}
-            images={videoLibrary.video}
-            description={videoLibrary.Content}
-          />
-        </div>
-      </div>
+      )}
     </div>
   );
 }

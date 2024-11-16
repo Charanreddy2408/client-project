@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 
-const Carousel = ({ title, images, description }) => {
+const Carousel = ({ title, images, description, isVideos }) => {
   // State to track the currently displayed image
   const [currentIndex, setCurrentIndex] = useState(0);
 
@@ -24,8 +24,9 @@ const Carousel = ({ title, images, description }) => {
       className="d-flex position-relative flex-column w-100 rounded shadow"
       style={{
         backgroundColor: "#3e4352",
-        maxWidth: "170px",
-        minWidth: "100%",
+        flex: 1,
+        width: "100%",
+        minWidth: "300px",
       }}
     >
       {/* Title */}
@@ -35,12 +36,23 @@ const Carousel = ({ title, images, description }) => {
 
       {/* Image Display */}
       <div className="image w-100 overflow-hidden position-relative">
-        <img
-          src={images[currentIndex]}
-          alt={title}
-          className="img-fluid"
-          style={{ objectFit: "cover", width: "100%" }}
-        />
+        {!isVideos ? (
+          <img
+            src={images[currentIndex]}
+            alt={title}
+            className="img-fluid"
+            style={{ objectFit: "cover", width: "100%" }}
+          />
+        ) : (
+          <video
+            autoPlay
+            muted
+            loop
+            style={{ objectFit: "cover", width: "100%" }}
+          >
+            <source src={images[currentIndex]} type="video/mp4" />
+          </video>
+        )}
       </div>
 
       {/* Description */}

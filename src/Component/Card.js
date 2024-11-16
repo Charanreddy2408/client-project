@@ -1,6 +1,6 @@
 import React from "react";
 
-const Card = ({ name, icon, alignmentCenter = true }) => {
+const Card = ({ name, icon, alignmentCenter = true  }) => {
   return (
     <div
       className=" text-center  border-secondary  shadow-sm card-hover border-0 py-3"

@@ -12,6 +12,7 @@ import MoodTracker from "./Component/moodTracker";
 import Analytics from "./Component/Analytics";
 import Feedback from "./Component/Feedback";
 import Techinal_Support from "./Component/Technical_support";
+import { Auth0Provider } from "@auth0/auth0-react";
 
 // Define the routes for the app
 const router = createBrowserRouter([
@@ -51,13 +52,25 @@ const router = createBrowserRouter([
     element: <div>About</div>,
   },
 ]);
+console.log(
+  process.env.REACT_APP_AUTH_DOMAIN,
+  process.env.REACT_APP_AUTH_CLIENT_Id
+);
 
 // Render the app using the RouterProvider and Redux Provider
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
   <React.StrictMode>
     <Provider store={store}>
-      <RouterProvider router={router} />
+      <Auth0Provider
+        domain={process.env.REACT_APP_AUTH_DOMAIN}
+        clientId={process.env.REACT_APP_AUTH_CLIENT_Id}
+        authorizationParams={{
+          redirect_uri: "http://localhost:3000/home",
+        }}
+      >
+        <RouterProvider router={router} />
+      </Auth0Provider>
     </Provider>
   </React.StrictMode>
 );

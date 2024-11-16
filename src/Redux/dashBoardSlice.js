@@ -45,7 +45,7 @@ const dashBoardSlice = createSlice({
         "Join us for the Diwali celebration with lights, music, and sweets.",
     },
     Notifications: {
-      image: [f1_Img,diwaliImg,f1_Img],
+      image: [f1_Img, diwaliImg, f1_Img],
       Title: "F1 Race Update",
       Content:
         "Catch the latest updates from the thrilling F1 race this weekend.",
@@ -57,8 +57,15 @@ const dashBoardSlice = createSlice({
       Content: "Access a variety of training videos to enhance your skills.",
     },
   },
+  reducers: {
+    // Toggle the notificationsEnabled state
+    toggleNotifications: (state, action) => {
+      console.log(action.payload, "payload");
+      state.Notifications.isopen = action.payload;
+    },
+  },
 });
 
-export const {} = dashBoardSlice.actions;
+export const { toggleNotifications } = dashBoardSlice.actions;
 
 export default dashBoardSlice.reducer;
