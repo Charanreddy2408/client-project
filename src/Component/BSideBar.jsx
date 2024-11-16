@@ -14,11 +14,14 @@ export default function BSideBar() {
 
   return (
     <div
-    className={`d-none d-lg-block position-relative top-0 left-0 h-[100vh] bg-black text-white p-3 transition-transform ${
-      isOpen ? "translate-x-0" : "-translate-x-full"
-    }`}
-    style={{ width: isOpen ? "15%" : "5%", zIndex: 9 }}
-    
+      className={`d-none d-lg-block position-sticky top-0 left-0 h-[100vh]  text-white p-3 transition-transform ${
+        isOpen ? "translate-x-0" : "-translate-x-full"
+      }`}
+      style={{
+        width: isOpen ? "15%" : "5%",
+        zIndex: 9,
+        backgroundColor: "#3e4352",
+      }}
     >
       <button
         className="position-absolute top-0 end-0 bg-dark text-white rounded-circle w-5 h-5 d-flex align-items-center justify-content-center border-0"
@@ -27,24 +30,55 @@ export default function BSideBar() {
         {isOpen ? "←" : "→"}
       </button>
       <ul className="mt-5 list-unstyled">
-        <li className={`d-flex align-items-center ${!isOpen ? "justify-content-center" : ""} mb-4`}>
+        <li
+          className={`d-flex align-items-center ${
+            !isOpen ? "justify-content-center" : ""
+          } mb-4`}
+        >
           <img src={emojiIcon} alt="Mood Tracker" className="fs-4" />
-          {isOpen && <a href="/home/icon" className="ms-3 text-white text-decoration-none">Home</a>}
+          {isOpen && (
+            <a
+              href="/home/icon"
+              className="ms-3 text-white text-decoration-none"
+            >
+              Home
+            </a>
+          )}
         </li>
-        <li className={`d-flex align-items-center ${!isOpen ? "justify-content-center" : ""} mb-4`}>
+        <li
+          className={`d-flex align-items-center ${
+            !isOpen ? "justify-content-center" : ""
+          } mb-4`}
+        >
           <img src={emojiIcon} alt="Mood Tracker" className="fs-4" />
           {isOpen && <span className="ms-3">Mood Tracker</span>}
         </li>
-        <li className={`d-flex align-items-center ${!isOpen ? "justify-content-center" : ""} mb-4`}>
+        <li
+          className={`d-flex align-items-center ${
+            !isOpen ? "justify-content-center" : ""
+          } mb-4`}
+        >
           <img src={analyticsIcon} alt="Analytics" className="fs-4" />
           {isOpen && <span className="ms-3">Analytics</span>}
         </li>
-        <li className={`d-flex align-items-center ${!isOpen ? "justify-content-center" : ""} mb-4`}>
+        <li
+          className={`d-flex align-items-center ${
+            !isOpen ? "justify-content-center" : ""
+          } mb-4`}
+        >
           <img src={emojiIcon} alt="Mood Tracker" className="fs-4" />
           {isOpen && <span className="ms-3">Feedback</span>}
         </li>
-        <li className={`d-flex align-items-center ${!isOpen ? "justify-content-center" : ""} mb-4`}>
-          <img src={technicalsupportIcon} alt="Technical Support" className="fs-4" />
+        <li
+          className={`d-flex align-items-center ${
+            !isOpen ? "justify-content-center" : ""
+          } mb-4`}
+        >
+          <img
+            src={technicalsupportIcon}
+            alt="Technical Support"
+            className="fs-4"
+          />
           {isOpen && <span className="ms-3">Technical Support</span>}
         </li>
       </ul>

@@ -13,6 +13,38 @@
   }
 }
 
+/* For Webkit-based browsers (Chrome, Edge, Safari) */
+::-webkit-scrollbar {
+  width: 8px; /* Adjust the scrollbar width */
+}
+
+::-webkit-scrollbar-track {
+  background: #000; /* Black background */
+}
+
+::-webkit-scrollbar-thumb {
+  background: #444; /* Dark gray thumb */
+  border-radius: 4px; /* Rounded corners for smoothness */
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #666; /* Slightly lighter gray on hover */
+}
+
+/* For smooth scrolling */
+html {
+  scroll-behavior: smooth;
+}
+
+/* For Firefox */
+* {
+  scrollbar-width: thin; /* Slimmer scrollbar */
+  scrollbar-color: #444 #000; /* Thumb color and track color */
+}
+.placeholder-white::placeholder {
+  color: white;
+}
+
 .App-header {
   background-color: #282c34;
   min-height: 100vh;
@@ -54,7 +86,7 @@
 
 @media (max-width: 991px) {
   .content-area {
-  /* Sidebar width when collapsed */
+    /* Sidebar width when collapsed */
   }
 }
 

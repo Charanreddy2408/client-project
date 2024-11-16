@@ -1,14 +1,51 @@
-import React from 'react';
+import React from "react";
 
 const Carousel = ({ title, image, description }) => {
   return (
-    <div className="card text-center bg-dark border-secondary mb-3 shadow-sm carousel-hover" style={{ width: '100%', maxWidth: '300px' }}>
-      <div className="card-body d-flex flex-column justify-content-center align-items-center p-2">
-        <div className="image-container mb-2" style={{ width: '100%', height: '150px', overflow: 'hidden' }}>
-          <img src={image} alt={title} className="img-fluid" style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
-        </div>
-        <h5 className="card-title text-white">{title}</h5>
-        <p className="card-text text-white">{description}</p>
+    <div
+      style={{
+        display: "flex",
+        flexDirection: "column",
+        gap: "10px",
+        maxWidth: "100%",
+        backgroundColor: "#656563",
+        borderRadius: "10px",
+        boxShadow: "0px 0px 10px 0px rgba(0,0,0,0.75)",
+      }}
+      className=""
+    >
+      <div className="tittle">
+        <h2
+          style={{
+            color: "white",
+            fontSize: "1.3rem",
+            fontWeight: "bold",
+            padding: "10px",
+            textAlign: "start",
+          }}
+        >
+          {title}
+        </h2>
+      </div>
+      <div
+        style={{
+          width: "100%",
+          height: "auto",
+          overflow: "hidden",
+        }}
+        className="image"
+      >
+        <img src={image} alt={title} />
+      </div>
+      <div
+        style={{
+          padding: "10px",
+          color: "white",
+          textAlign: "start",
+        }}
+        className="description"
+      >
+        <p>{description}</p>
       </div>
     </div>
   );

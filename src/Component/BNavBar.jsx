@@ -5,7 +5,10 @@ export default function BNavBar() {
   const [isSearchOpen, setIsSearchOpen] = useState(false);
 
   return (
-    <nav className="navbar navbar-expand-lg navbar-custom text-white position-fixed top-0 w-100 z-index-10" style={{ backgroundColor: 'black' }}>
+    <nav
+      className="navbar navbar-expand-lg navbar-custom text-white position-sticky top-0 w-100 z-index-10"
+      style={{ backgroundColor: "black" }}
+    >
       <div className="container-fluid">
         {/* Home Icon */}
         <button className="btn btn-outline-light">
@@ -26,10 +29,18 @@ export default function BNavBar() {
             isSearchOpen ? "d-block" : "d-none d-lg-flex"
           }`}
         >
-          <form className="d-flex" style={{ maxWidth: '300px' }}>
+          <form
+            style={{
+              backgroundColor: "#3e4352",
+              width: "50%",
+              borderRadius: "5px",
+            }}
+            className="d-flex justify-content-between align-items-center p-1 px-4"
+          >
+            <FaSearch size={20} />
             <input
               type="text"
-              className="form-control me-2"
+              className="form-control w-100   border-0  placeholder-white"
               placeholder="Search..."
             />
           </form>
