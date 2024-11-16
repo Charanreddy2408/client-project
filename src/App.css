@@ -36,3 +36,32 @@
     transform: rotate(360deg);
   }
 }
+.App {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+.main-section {
+  display: flex;
+  flex-direction: row;
+}
+
+.content-area {
+  flex: 1;
+  width: 100%;
+}
+
+@media (max-width: 991px) {
+  .content-area {
+  /* Sidebar width when collapsed */
+  }
+}
+
+.navbar-custom {
+  z-index: 10; /* Ensure navbar is above other content */
+}
+
+.position-fixed {
+  z-index: 9; /* Ensure sidebar is below navbar */
+}
