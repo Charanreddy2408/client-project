@@ -7,10 +7,100 @@
   pointer-events: none;
 }
 
+/* Sidebar Container */
+.sidebar-container {
+  height: 100vh;
+  max-height: calc(100vh - 60px);
+  transition: width 0.3s ease, transform 0.3s ease;
+  width: 15%; /* Default open width */
+}
+
+.sidebar-container.closed {
+  width: 5%; /* Reduced width when closed */
+}
+
+.sidebar-container.open {
+  transform: translateX(0);
+}
+
+/* Button Hover Effects */
+button:hover {
+  background-color: #555; /* Slightly lighter shade for hover */
+}
+
+.container-custom {
+  max-height: calc(100vh - 60px);
+  overflow-y: auto;
+  padding-left: 20px;
+  padding-right: 20px;
+  padding-top: 10px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  width: 100%;
+}
+
+/* For medium screens (tablet) and above, apply 35% width */
+@media (min-width: 768px) {
+  .container-custom-md {
+    width: 55% !important; /* Force the width to 35% */
+  }
+}
 @media (prefers-reduced-motion: no-preference) {
   .App-logo {
     animation: App-logo-spin infinite 20s linear;
   }
+}
+
+/* For Webkit-based browsers (Chrome, Edge, Safari) */
+::-webkit-scrollbar {
+  width: 8px; /* Adjust the scrollbar width */
+}
+
+::-webkit-scrollbar-track {
+  background: #000; /* Black background */
+}
+
+::-webkit-scrollbar-thumb {
+  background: #444; /* Dark gray thumb */
+  border-radius: 4px; /* Rounded corners for smoothness */
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #666; /* Slightly lighter gray on hover */
+}
+
+/* For smooth scrolling */
+html {
+  scroll-behavior: smooth;
+}
+
+/* For Firefox */
+/* For Webkit-based browsers (Chrome, Safari, Edge) */
+::-webkit-scrollbar {
+  width: 3px; /* Thinner scrollbar */
+}
+
+::-webkit-scrollbar-track {
+  background: #000; /* Black background */
+}
+
+::-webkit-scrollbar-thumb {
+  background: #444; /* Dark gray thumb */
+  border-radius: 4px; /* Rounded corners for smoothness */
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #666; /* Slightly lighter gray on hover */
+}
+
+/* For Firefox */
+* {
+  scrollbar-width: none; /* No scrollbar visible in Firefox */
+  scrollbar-color: #444 #000; /* Thumb color and track color */
+}
+.placeholder-white::placeholder {
+  color: white;
 }
 
 .App-header {
@@ -53,13 +143,13 @@
 }
 /* Add this to your custom CSS for smooth hover effect */
 .mood-card:hover {
-  transform: translateY(-5px);  /* Lift the card */
+  transform: translateY(-5px); /* Lift the card */
   box-shadow: 0 10px 15px rgba(0, 0, 0, 0.6); /* Add a shadow */
 }
 
 @media (max-width: 991px) {
   .content-area {
-  /* Sidebar width when collapsed */
+    /* Sidebar width when collapsed */
   }
 }
 

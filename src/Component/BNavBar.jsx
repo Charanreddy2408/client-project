@@ -5,11 +5,14 @@ export default function BNavBar() {
   const [isSearchOpen, setIsSearchOpen] = useState(false);
 
   return (
-    <nav className="navbar navbar-expand-lg navbar-custom text-white position-fixed top-0 w-100 z-index-10" style={{ backgroundColor: 'black' }}>
+    <nav
+      className="navbar navbar-expand-lg py-4 navbar-custom text-white position-sticky top-0 w-100 z-index-10"
+      style={{ backgroundColor: "black" }}
+    >
       <div className="container-fluid">
         {/* Home Icon */}
-        <button className="btn btn-outline-light">
-          <FaHome />
+        <button className="btn ">
+          <FaHome color="white" size={30} />
         </button>
 
         {/* Toggle Search */}
@@ -26,10 +29,25 @@ export default function BNavBar() {
             isSearchOpen ? "d-block" : "d-none d-lg-flex"
           }`}
         >
-          <form className="d-flex" style={{ maxWidth: '300px' }}>
+          <form
+            style={{
+              backgroundColor: "#3e4352",
+              width: "50%",
+              borderRadius: "5px",
+              gap: "20px",
+            }}
+            className="d-flex justify-content-start align-items-center p-2 px-4"
+          >
+            <FaSearch size={20} />
             <input
+              style={{
+                backgroundColor: "#3e4352",
+                border: "none",
+                color: "white",
+                textAlign: "start",
+              }}
               type="text"
-              className="form-control me-2"
+              className="placeholder-white"
               placeholder="Search..."
             />
           </form>
@@ -37,11 +55,11 @@ export default function BNavBar() {
 
         {/* Icons */}
         <div className="d-flex ms-auto">
-          <button className="btn btn-outline-light me-2">
-            <FaBell />
+          <button className="btn  me-2">
+            <FaBell color="white" size={20} />
           </button>
-          <button className="btn btn-outline-light">
-            <FaSignOutAlt />
+          <button className="btn ">
+            <FaSignOutAlt color="white" size={20} />
           </button>
         </div>
       </div>

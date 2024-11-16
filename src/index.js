@@ -29,36 +29,20 @@ const router = createBrowserRouter([
       },
       {
         path: "/home/mood-tracker",
-        element: (
-          <div className="bg-dark text-white min-vh-100 w-100">
-            <MoodTracker />
-          </div>
-        ),
+        element: <MoodTracker />,
       },
       {
         path: "/home/Analytics",
-        element: (
-          <div className="bg-dark text-white min-vh-100 w-100">
-            <Analytics />
-          </div>
-        ),
+        element: <Analytics />,
       },
 
       {
         path: "/home/Techinal_Support",
-        element: (
-          <div className="bg-dark text-white min-vh-100 w-100">
-            <Techinal_Support />
-          </div>
-        ),
+        element: <Techinal_Support />,
       },
       {
         path: "/home/Feedback",
-        element: (
-          <div className="bg-dark text-white min-vh-100 w-100">
-            <Feedback />
-          </div>
-        ),
+        element: <Feedback />,
       },
     ],
   },
