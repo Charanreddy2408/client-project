@@ -29,23 +29,23 @@ export default function BSideBar() {
       <ul className="mt-5 list-unstyled">
         <li className={`d-flex align-items-center ${!isOpen ? "justify-content-center" : ""} mb-4`}>
           <img src={emojiIcon} alt="Mood Tracker" className="fs-4" />
-          {isOpen && <a href="/home/icon" className="ms-3 text-white text-decoration-none">Home</a>}
+          {isOpen && <a href="/home/" className="ms-3 text-white text-decoration-none">Home</a>}
         </li>
         <li className={`d-flex align-items-center ${!isOpen ? "justify-content-center" : ""} mb-4`}>
           <img src={emojiIcon} alt="Mood Tracker" className="fs-4" />
-          {isOpen && <span className="ms-3">Mood Tracker</span>}
+          {isOpen && <a href="/home/mood-tracker" className="ms-3 text-white text-decoration-none">Mood Tracker</a>}
         </li>
         <li className={`d-flex align-items-center ${!isOpen ? "justify-content-center" : ""} mb-4`}>
           <img src={analyticsIcon} alt="Analytics" className="fs-4" />
-          {isOpen && <span className="ms-3">Analytics</span>}
+          {isOpen && <a href="/home/Analytics" className="ms-3 text-white text-decoration-none">Analytics</a>}
         </li>
         <li className={`d-flex align-items-center ${!isOpen ? "justify-content-center" : ""} mb-4`}>
           <img src={emojiIcon} alt="Mood Tracker" className="fs-4" />
-          {isOpen && <span className="ms-3">Feedback</span>}
+          {isOpen && <a href="/home/Feedback" className="ms-3 text-white text-decoration-none">Feedback</a>}
         </li>
         <li className={`d-flex align-items-center ${!isOpen ? "justify-content-center" : ""} mb-4`}>
           <img src={technicalsupportIcon} alt="Technical Support" className="fs-4" />
-          {isOpen && <span className="ms-3">Technical Support</span>}
+          {isOpen && <a href="/home/Techinal_Support" className="ms-3 text-white text-decoration-none">Technical Support</a>}
         </li>
       </ul>
     </div>

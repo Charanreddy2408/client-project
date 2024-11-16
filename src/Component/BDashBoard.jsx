@@ -20,15 +20,21 @@ export default function BDashBoard() {
   return (
     <div className="bg-dark d-flex text-white min-vh-100 w-100 p-5">
       <div className="container p-5  ">
-      <div className="row mb-5 justify-content-start">
+   <div className="row mb-5 justify-content-start">
   <div
-    className="p-4 shadow bg-secondary rounded d-flex align-items-center"
+    className="p-4 shadow bg-secondary rounded d-flex flex-column flex-md-row align-items-center"
     style={{ marginTop: "30px" }}
   >
     {/* Circle with initials */}
     <div
       className="d-flex justify-content-center align-items-center text-white bg-primary rounded-circle"
-      style={{ width: '100px', height: '100px', fontSize: '18px', fontWeight: 'bold', marginRight: '15px' }}
+      style={{
+        width: '80px', // Default width for small screens
+        height: '80px', // Default height for small screens
+        fontSize: '18px',
+        fontWeight: 'bold',
+        marginRight: '15px',
+      }}
     >
       <h1>JD</h1>
     </div>
@@ -44,6 +50,7 @@ export default function BDashBoard() {
     </div>
   </div>
 </div>
+
 
         <div className="row">
           <div className="">
