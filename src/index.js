@@ -13,6 +13,9 @@ import Analytics from "./Component/Analytics";
 import Feedback from "./Component/Feedback";
 import Techinal_Support from "./Component/Technical_support";
 import { Auth0Provider } from "@auth0/auth0-react";
+import Favourites from "./Component/Favourites";
+import "./styles/main.scss";
+import ProtectedRoute from "./Component/ProtectRoute";
 
 // Define the routes for the app
 const router = createBrowserRouter([
@@ -22,7 +25,12 @@ const router = createBrowserRouter([
   },
   {
     path: "/home",
-    element: <App />,
+
+    element: (
+      <ProtectedRoute>
+        <App />,
+      </ProtectedRoute>
+    ),
     children: [
       {
         path: "/home/",
@@ -44,6 +52,10 @@ const router = createBrowserRouter([
       {
         path: "/home/Feedback",
         element: <Feedback />,
+      },
+      {
+        path: "/home/Favourites",
+        element: <Favourites />,
       },
     ],
   },

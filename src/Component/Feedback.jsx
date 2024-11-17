@@ -4,7 +4,6 @@ const Feedback = () => {
   return (
     <div
       style={{
-        maxHeight: "calc(100vh - 60px)",
       }}
       className=" bg-dark text-white h-100 w-100"
     >

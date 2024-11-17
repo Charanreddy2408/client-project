@@ -3,6 +3,10 @@ import { useNavigate } from "react-router-dom";
 import { useAuth0 } from "@auth0/auth0-react";
 export default function Login() {
   const navigate = useNavigate();
+  const { user, isAuthenticated, isLoading } = useAuth0();
+  if (isAuthenticated) {
+    navigate("/home");
+  }
   const { loginWithRedirect } = useAuth0();
   function handleClick() {
     // navigate("/home");

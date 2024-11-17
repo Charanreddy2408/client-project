@@ -27,6 +27,34 @@
 button:hover {
   background-color: #555; /* Slightly lighter shade for hover */
 }
+/* Add this to your CSS file */
+.emoji-display {
+  margin: 20px 0;
+  text-align: center;
+}
+#root {
+  background-color: black;
+}
+
+.emoji {
+  font-size: 6rem; /* Adjust the size of the emoji */
+  transition: transform 0.3s ease;
+}
+
+.emoji-animated {
+  animation: bounce 1s ease-in-out infinite;
+}
+
+/* Bounce Animation */
+@keyframes bounce {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-20px);
+  }
+}
 
 .container-custom {
   max-height: calc(100vh - 60px);
@@ -54,20 +82,20 @@ button:hover {
 
 /* For Webkit-based browsers (Chrome, Edge, Safari) */
 ::-webkit-scrollbar {
-  width: 8px; /* Adjust the scrollbar width */
+  width: 2px; /* Adjust the scrollbar width */
 }
 
 ::-webkit-scrollbar-track {
-  background: #000; /* Black background */
+  background: #c8c2c2; /* Black background */
 }
 
 ::-webkit-scrollbar-thumb {
-  background: #444; /* Dark gray thumb */
-  border-radius: 4px; /* Rounded corners for smoothness */
+  background: #474747; /* Dark gray thumb */
+  border-radius: 2px; /* Rounded corners for smoothness */
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: #666; /* Slightly lighter gray on hover */
+  background: #444444; /* Slightly lighter gray on hover */
 }
 
 /* For smooth scrolling */
@@ -78,35 +106,83 @@ html {
 .loader {
   width: 48px;
   height: 48px;
-  border: 5px solid #FFF;
+  border: 5px solid #fff;
   border-bottom-color: transparent;
   border-radius: 50%;
   display: inline-block;
   box-sizing: border-box;
   animation: rotation 1s linear infinite;
-  }
+}
+/* Fade-in and slide-in effect */
+.fade-in {
+  animation: fadeIn 0.5s ease-out, slideIn 0.5s ease-out;
+}
 
-  @keyframes rotation {
+.fade-out {
+  animation: fadeOut 0.5s ease-in, slideOut 0.5s ease-in;
+}
+
+/* Fade-in keyframes */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+/* Fade-out keyframes */
+@keyframes fadeOut {
+  from {
+    opacity: 1;
+  }
+  to {
+    opacity: 0;
+  }
+}
+
+/* Slide-in from bottom */
+@keyframes slideIn {
+  from {
+    transform: translateY(30px);
+  }
+  to {
+    transform: translateY(0);
+  }
+}
+
+/* Slide-out to bottom */
+@keyframes slideOut {
+  from {
+    transform: translateY(0);
+  }
+  to {
+    transform: translateY(30px);
+  }
+}
+
+@keyframes rotation {
   0% {
-      transform: rotate(0deg);
+    transform: rotate(0deg);
   }
   100% {
-      transform: rotate(360deg);
+    transform: rotate(360deg);
   }
-  } 
+}
 /* For Firefox */
 /* For Webkit-based browsers (Chrome, Safari, Edge) */
 ::-webkit-scrollbar {
-  width: 3px; /* Thinner scrollbar */
+  width: 1px !important; /* Thinner scrollbar */
 }
 
 ::-webkit-scrollbar-track {
-  background: #000; /* Black background */
+  background: #000000; /* Black background */
 }
 
 ::-webkit-scrollbar-thumb {
-  background: #444; /* Dark gray thumb */
-  border-radius: 4px; /* Rounded corners for smoothness */
+  background: #282828; /* Dark gray thumb */
+  border-radius: 2px; /* Rounded corners for smoothness */
 }
 
 ::-webkit-scrollbar-thumb:hover {
@@ -115,8 +191,9 @@ html {
 
 /* For Firefox */
 * {
-  scrollbar-width: none; /* No scrollbar visible in Firefox */
-  scrollbar-color: #444 #000; /* Thumb color and track color */
+  /* No scrollbar visible in Firefox */
+  scrollbar-color: #444 #000000; /* Thumb color and track color */
+  /* font-family: "DaimlerCS-Demi", sans-serif; */
 }
 .placeholder-white::placeholder {
   color: white;
@@ -154,6 +231,23 @@ html {
 .main-section {
   display: flex;
   flex-direction: row;
+  max-height: "calc(100vh - 60px)";
+}
+.search:focus {
+  outline: none;
+}
+.position-absolute-container {
+  position: absolute;
+  top: 20;
+  max-height: 60%;
+  overflow-x: scroll;
+  background-color: #000;
+}
+
+@media (min-width: 1200px) {
+  .position-absolute-container {
+    position: relative;
+  }
 }
 
 .content-area {

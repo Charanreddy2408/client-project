@@ -1,0 +1,27 @@
+// Custom theme variables
+$primary: #5f6368; // Custom primary color
+$secondary: #1d1d1d; // Custom secondary color
+$success: #4caf50; // Custom success color
+$danger: #f44336; // Custom danger color
+$warning: #ff9800; // Custom warning color
+$light: #f1f1f1; // Custom light color
+$active: #3393de; // Custom dark color
+$info: #0f0f0f; // Custom info color
+$notActive: #666; // New custom color
+$card_border:#0f0f0f;
+// Update the theme-colors map
+$theme-colors: (
+  "primary": $primary,
+  "secondary": $secondary,
+  "success": $success,
+  "danger": $danger,
+  "warning": $warning,
+  "info": $info,
+  "light": $light,
+  "active": $active,
+  "notActive": $notActive ,// Add the custom color to the theme,,,,,,
+  "card_border": $card_border
+);
+
+// Import Bootstrap
+@import "bootstrap";

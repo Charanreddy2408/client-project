@@ -1,0 +1,12 @@
+// main.scss
+
+// Import custom variables before Bootstrap
+@import "./variables";
+
+// Now import Bootstrap SASS
+@import "bootstrap/scss/bootstrap";
+
+// Your additional custom styles can go here
+.custom-class {
+  background-color: $primary; // Using the custom primary color
+}

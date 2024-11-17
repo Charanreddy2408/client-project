@@ -1,34 +1,62 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
+import { useDispatch } from "react-redux";
+import { AiFillHeart, AiOutlineHeart } from "react-icons/ai"; // Import the heart icons
+import { toggleFavorite } from "../Redux/dashBoardSlice"; // Import the action
+import { useSelector } from "react-redux";
+import { setIsRemovedState } from "../Redux/dashBoardSlice";
+const Card = ({
+  name,
+  icon,
+  alignmentCenter = true,
+  isfavourite = true,
+  cardId,
+  isFavoriteAdded,
+}) => {
+  const [isFav, setIsFav] = useState(isfavourite);
+  const dispatch = useDispatch();
+  const Myfavourites = useSelector(
+    (state) => state.dashBoard.dashBoardDetails.Myfavourites
+  );
+  const handleFavoriteToggle = () => {
+    const newIsFav = !isFav;
+    setIsFav(newIsFav);
+    dispatch(toggleFavorite({ cardId, isFavorite: newIsFav })); // Dispatch the action to update Redux state
+    alignmentCenter = !alignmentCenter;
+    dispatch(setIsRemovedState(true));
+  };
 
-const Card = ({ name, icon, alignmentCenter = true  }) => {
+  useEffect(() => {
+    let ids = Myfavourites.map((item) => item.id);
+    setIsFav(ids.includes(cardId));
+  }, [Myfavourites]);
+
   return (
     <div
-      className=" text-center  border-secondary  shadow-sm card-hover border-0 py-3"
+      className="text-center border-secondary bg-secondary shadow-sm card-hover border-0 py-3"
       style={{
-        minWidth: "130px",
+        minWidth: "120px",
+        maxWidth: "160px",
         paddingBlock: "3px",
-        backgroundColor: "#3e4352",
+        cursor: "pointer",
+        position: "relative", // Ensure the heart icon is positioned relative to the card
       }}
     >
-      {/* ${
-          alignmentCenter ? "flex-column" : "flex-row"
-        }  */}
       <div
         style={{
           flexDirection: alignmentCenter ? "column" : "row",
-          gap: "5px",
+          gap: "10px",
         }}
-        className={`card-body d-flex justify-content-center align-items-center `}
+        className="card-body d-flex justify-content-start align-items-center"
       >
         <img
           src={icon}
           alt={name}
           className=""
           style={{
+            width: alignmentCenter ? "50px" : "20px",
+            height: alignmentCenter ? "40px" : "20px",
             maxHeight: "60px",
             objectFit: "contain",
-            marginRight: alignmentCenter ? "0" : "10px",
-            // Apply margin to the right when alignmentCenter is false
           }}
         />
         <h6
@@ -39,6 +67,26 @@ const Card = ({ name, icon, alignmentCenter = true  }) => {
         >
           {name}
         </h6>
+
+        {/* Heart Icon shown only when isfavourite is true */}
+        {!isfavourite && (
+          <div
+            style={{
+              position: "absolute",
+              top: "10px",
+              right: "10px",
+              cursor: "pointer",
+            }}
+            onClick={handleFavoriteToggle}
+          >
+            {/* If the item is favorited, show the filled heart, else show the outline */}
+            {isFav ? (
+              <AiFillHeart size={24} color="#f3406c" />
+            ) : (
+              <AiOutlineHeart size={24} color="white" />
+            )}
+          </div>
+        )}
       </div>
     </div>
   );
