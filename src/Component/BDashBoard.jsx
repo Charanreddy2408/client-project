@@ -106,71 +106,71 @@ export default function BDashBoard() {
       <div
         style={{
           overflowY: "auto",
-          maxWidth: !notificationIsOpen ? "100%" : "100%",
+          maxWidth: !notificationIsOpen ? "80%" : "100%",
         }}
         className="container py-4 w-100 w-md-75"
       >
-       <div
-  style={{
-    background: "transparent",
-    backgroundRepeat: "no-repeat",
-    backgroundSize: "cover",
-  }}
-  className="row mb-5 border border-card_border justify-content-start"
->
-  <div
-    className="py-2 shadow rounded d-flex flex-column flex-md-row justify-content-start align-items-center w-100"
-    style={{ marginTop: "30px" }}
-  >
-    {/* Circle with initials */}
-    <div
-      className="d-flex mb-2 justify-content-center align-items-center text-white rounded-circle"
-      style={{
-        minWidth: "80px", // Default width for small screens
-        height: "80px", // Default height for small screens
-        fontSize: "18px",
-        fontWeight: "bold",
-      }}
-    >
-      {isLoading ? (
-        <span className="loader"></span>
-      ) : (
-        <img
-          className="rounded-circle"
+        <div
           style={{
-            width: "100%",
-            height: "100%",
-            objectFit: "cover", // Ensures the image fills the circle proportionally
+            background: "transparent",
+            backgroundRepeat: "no-repeat",
+            backgroundSize: "cover",
+            // backgroundImage: 'url("/banner.jpeg")',
           }}
-          src={user.picture}
-          alt="user"
-        />
-      )}
-    </div>
+          className="row mb-5 border border-card_border justify-content-start"
+        >
+          <div
+            className="py-2 shadow rounded d-flex flex-column flex-md-row justify-content-start align-items-center w-100"
+            style={{ marginTop: "30px" }}
+          >
+            {/* Circle with initials */}
+            <div
+              className="d-flex mb-2 justify-content-center align-items-center text-white rounded-circle"
+              style={{
+                minWidth: "80px", // Default width for small screens
+                height: "80px", // Default height for small screens
+                fontSize: "18px",
+                fontWeight: "bold",
+              }}
+            >
+              {isLoading ? (
+                <span className="loader"></span>
+              ) : (
+                <img
+                  className="rounded-circle"
+                  style={{
+                    width: "100%",
+                    height: "100%",
+                    objectFit: "cover", // Ensures the image fills the circle proportionally
+                  }}
+                  src={user.picture}
+                  alt="user"
+                />
+              )}
+            </div>
 
-    {/* Rest of the content */}
-    <div className="py-4 px-3 text-center text-md-start">
-      <h1
-        style={{
-          fontSize: "24px",
-        }}
-        className="text-white"
-      >
-        Hello {user?.name}, Goodmorning!
-      </h1>
-      <p
-        style={{
-          fontSize: "20px",
-          color: "#5c5c5c",
-        }}
-        className="text-start"
-      >
-        Your personalized dashboard. Manage your work seamlessly.
-      </p>
-    </div>
-  </div>
-</div>
-
+            {/* Rest of the content */}
+            <div className="py-4 px-3  text-md-start d-flex flex-column justify-content-center align-items-center">
+              <h1
+                style={{
+                  fontSize: "24px",
+                }}
+                className="text-white"
+              >
+                Hello {user?.name}, Goodmorning!
+              </h1>
+              <p
+                style={{
+                  fontSize: "20px",
+                  color: "#5c5c5c",
+                }}
+                className=""
+              >
+                Your personalized dashboard. Manage your work seamlessly.
+              </p>
+            </div>
+          </div>
+        </div>
 
         <div className="row">
           <div className="">
@@ -210,22 +210,21 @@ export default function BDashBoard() {
             {/* Finance & Admin Section */}
             {showSections.finance && (
               <div className="row mb-4">
-              <div>
-                <h2 className="text-white text-start fs-5 mb-2">
-                  Finance & Admin
-                </h2>
+                <div>
+                  <h2 className="text-white text-start fs-5 mb-2">
+                    Finance & Admin
+                  </h2>
+                </div>
+
+                {/* 2-column responsive grid on mobile */}
+                <div className="row row-cols-2 row-cols-sm-2 row-cols-md-3 row-cols-lg-5 g-3">
+                  {financeCards?.map((item, index) => (
+                    <div className="col" key={index}>
+                      <Card name={item.name} icon={item.icon} />
+                    </div>
+                  ))}
+                </div>
               </div>
-            
-              {/* 2-column responsive grid on mobile */}
-              <div className="row row-cols-2 row-cols-sm-2 row-cols-md-3 row-cols-lg-5 g-3">
-                {financeCards?.map((item, index) => (
-                  <div className="col" key={index}>
-                    <Card name={item.name} icon={item.icon} />
-                  </div>
-                ))}
-              </div>
-            </div>
-            
             )}
 
             {/* Facilities & Management Section */}

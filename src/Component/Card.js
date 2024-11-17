@@ -32,10 +32,11 @@ const Card = ({
 
   return (
     <div
-      className="text-center border-secondary bg-secondary shadow-sm card-hover border-0 py-3"
+      className="text-center border-secondary bg-secondary shadow-sm card-hover border-0 py-3 px-2"
       style={{
-        minWidth: "120px",
+        minWidth: "140px",
         maxWidth: "160px",
+        maxHeight: "100px",
         paddingBlock: "3px",
         cursor: "pointer",
         position: "relative", // Ensure the heart icon is positioned relative to the card
@@ -55,13 +56,13 @@ const Card = ({
           style={{
             width: alignmentCenter ? "50px" : "20px",
             height: alignmentCenter ? "40px" : "20px",
-            maxHeight: "60px",
+            maxHeight: "40px",
             objectFit: "contain",
           }}
         />
         <h6
           style={{
-            fontSize: "0.8rem",
+            fontSize: "0.7rem",
           }}
           className="text-white mb-0"
         >

@@ -58,14 +58,14 @@ body {
 
 @font-face {
   font-family: "DaimlerCS-Bold";
-  src: url("../public/fonts/DaimlerCS-Bold.ttf") format("opentype");
+  src: url("../public/fonts/DaimlerCSPro-Bold.otf") format("opentype");
   font-weight: normal;
   font-style: normal;
 }
 
 @font-face {
   font-family: "DaimlerCS-BoldItalic";
-  src: url("../public/fonts/DaimlerCS-BoldItalic.ttf") format("opentype");
+  src: url("../public/fonts/DaimlerCSPro-BoldItalic.otf") format("opentype");
   font-weight: normal;
   font-style: normal;
 }

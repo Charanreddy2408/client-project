@@ -21,8 +21,9 @@ export default function BNavBar() {
 
   // Prevent default behavior for Enter key and toggle search on Enter
   const handleprevent = (event) => {
+    event.preventDefault();
     if (window.innerWidth <= 768 && event.key === "Enter") {
-      event.preventDefault(); // Only prevent default behavior for Enter key
+      // Only prevent default behavior for Enter key
       setIsSearchOpen(!isSearchOpen); // Toggle search open/close when Enter key is pressed
     }
   };

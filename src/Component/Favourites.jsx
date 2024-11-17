@@ -53,7 +53,7 @@ export default function Favourites() {
               <div className="col-12">
                 <h2 className="fs-5 mb-2 text-start">My Favorites</h2>
               </div>
-              <div className="row row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-lg-5 g-3">
+              <div className="row row-cols-2 row-cols-sm-2 row-cols-md-3 row-cols-lg-5 g-3">
                 {mostUsedItems.map((item) => (
                   <div className="col" key={item.id}>
                     <Card
@@ -72,7 +72,7 @@ export default function Favourites() {
               <div className="col-12">
                 <h2 className="fs-5 mb-2 text-start">Finance & Admin</h2>
               </div>
-              <div className="row row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-lg-5 g-3">
+              <div className="row row-cols-2 row-cols-sm-2 row-cols-md-3 row-cols-lg-5 g-3">
                 {financeItems.map((item) => (
                   <div className="col" key={item.id}>
                     <Card
@@ -94,7 +94,7 @@ export default function Favourites() {
                   Facilities & Management
                 </h2>
               </div>
-              <div className="row row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-lg-5 g-3">
+              <div className="row row-cols-2 row-cols-sm-2 row-cols-md-3 row-cols-lg-5 g-3">
                 {facilitiesItems.map((item) => (
                   <div className="col" key={item.id}>
                     <Card
@@ -114,7 +114,7 @@ export default function Favourites() {
               <div className="col-12">
                 <h2 className="fs-5 mb-2 text-start">Human Resources</h2>
               </div>
-              <div className="row row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-lg-5 g-3">
+              <div className="row row-cols-2 row-cols-sm-2 row-cols-md-3 row-cols-lg-5 g-3">
                 {humanResources.map((item) => (
                   <div className="col" key={item.id}>
                     <Card

@@ -69,7 +69,7 @@ const dashBoardSlice = createSlice({
         { name: "Training Schedule", id: "12", icon: greenIcon },
       ],
       Facilities_Managment: [
-        { name: "Building Maintenance", id: "13", icon: redIcon },
+        { name: "Building", id: "13", icon: redIcon },
         { name: "Office Supplies", id: "14", icon: redIcon },
         { name: "Emergency Contacts", id: "15", icon: redIcon },
         { name: "Seating Plan", id: "16", icon: redIcon },
