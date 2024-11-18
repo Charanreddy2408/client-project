@@ -2,14 +2,12 @@ import { createSlice } from "@reduxjs/toolkit";
 import imageIcon from "../Assests/images/Group 1272628427.png";
 import diwaliImg from "../Assests/images/Group 1272628364.png";
 import f1_Img from "../Assests/images/Group 1272628370.png";
-import calender from "../Assests/images/Vector (4).png";
-import t1 from "../Assests/images/Vector (3).png";
-import t2 from "../Assests/images/Vector (5).png";
 import emojiIcon from "../Assests/images/Group 1272628347.png";
 import analyticsIcon from "../Assests/images/Frame (1).png";
 import technicalsupportIcon from "../Assests/images/Vector (2).png";
 import redIcon from "../Assests/images/redicon.jpeg";
 import greenIcon from "../Assests/images/greenicon.jpeg";
+
 const dashBoardSlice = createSlice({
   name: "dashboard",
   initialState: {
@@ -143,6 +141,9 @@ const dashBoardSlice = createSlice({
     setSearchValue: (state, action) => {
       state.dashBoardDetails.searchValue = action.payload;
     },
+    // setFacilitiesItems: (state, action) => {
+    //   state.dashBoardDetails.Facilities_Managment = action.payload;
+    // },
   },
 });
 

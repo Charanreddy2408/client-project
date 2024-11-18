@@ -34,7 +34,7 @@ const Card = ({
     <div
       className="text-center border-secondary bg-secondary shadow-sm card-hover border-0 py-3 px-2"
       style={{
-        minWidth: "140px",
+        minWidth: "130px",
         maxWidth: "160px",
         maxHeight: "100px",
         paddingBlock: "3px",

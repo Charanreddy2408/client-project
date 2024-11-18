@@ -8,7 +8,10 @@ $light: #f1f1f1; // Custom light color
 $active: #3393de; // Custom dark color
 $info: #0f0f0f; // Custom info color
 $notActive: #666; // New custom color
-$card_border:#2f3134;
+$card_border: #2f3134;
+$bg: #5c5c5c;
+$custom-bg: #3e4352;
+$sidebar-bg: #141414;
 // Update the theme-colors map
 $theme-colors: (
   "primary": $primary,
@@ -19,8 +22,12 @@ $theme-colors: (
   "info": $info,
   "light": $light,
   "active": $active,
-  "notActive": $notActive ,// Add the custom color to the theme,,,,,,
-  "card_border": $card_border
+  "notActive": $notActive,
+  // Add the custom color to the theme,,,,,,
+  "card_border": $card_border,
+  "bg-colour": $bg,
+  "custom-bg": $custom-bg,
+  "sidebar-bg": $sidebar-bg,
 );
 
 // Import Bootstrap

@@ -10,6 +10,7 @@ import { setSearchValue } from "../Redux/dashBoardSlice";
 export default function BNavBar() {
   const location = useLocation();
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
+  const [windowWidth, setWindowWidth] = useState(window.innerWidth);
   const [isSearchOpen, setIsSearchOpen] = useState(true);
   const [isEnterKeyPressed, setIsEnterKeyPressed] = useState(false); // Track whether Enter is pressed
   const searchValue = useSelector(
@@ -55,10 +56,32 @@ export default function BNavBar() {
   const isActive = (path) => location.pathname === path;
   console.log(isActive, "isActive");
 
+  // Update windowWidth when the window resizes
+  useEffect(() => {
+    const handleResize = () => {
+      setWindowWidth(window.innerWidth);
+    };
+
+    window.addEventListener("resize", handleResize);
+
+    // Cleanup event listener on component unmount
+    return () => {
+      window.removeEventListener("resize", handleResize);
+    };
+  }, []);
+
+  // Dispatch the action only on mobile screens
+  useEffect(() => {
+    if (windowWidth <= 768) {
+      console.log("runned");
+      dispatch(toggleNotifications(false));
+    }
+  }, [windowWidth, dispatch]);
+
   return (
     <>
       <nav
-        className="navbar border-bottom border-primary  navbar-expand-lg  navbar-custom text-white position-sticky top-0 w-100"
+        className="navbar navbar-expand-lg navbar-custom text-white position-sticky top-0 w-100 border-bottom border-primary \"
         style={{ backgroundColor: "black" }}
       >
         <div className="d-flex justify-content-between align-items-center w-100">
@@ -78,23 +101,17 @@ export default function BNavBar() {
           <div className="d-flex justify-content-center w-50">
             {isSearchOpen ? (
               <form
-                style={{ gap: "15px" }}
-                className="d-flex align-items-center flex-grow-1 bg-dark p-2 rounded w-100"
+                // style={{ gap: "15px" }}
+                className="d-flex align-items-center flex-grow-1 bg-dark p-2 rounded w-100 gap-3"
               >
                 <button className="btn d-none d-lg-block">
                   <FaSearch color="#5f6368" size={20} />
                 </button>
                 <input
-                  style={{
-                    color: "#5f6368",
-                    border: "none",
-                    outline: "none",
-                    backgroundColor: "transparent",
-                  }}
                   value={searchValue}
                   onChange={(e) => dispatch(setSearchValue(e.target.value))}
                   type="text"
-                  className="bg-transparent search border-0  w-100 pl-2"
+                  className="bg-transparent search border-0 text-secondary border-0 bg-transparent w-100 pl-2"
                   placeholder="Search here"
                   onKeyDown={(event) => {
                     if (event.key === "Enter") {
@@ -135,17 +152,17 @@ export default function BNavBar() {
       {/* Sidebar */}
       {isSidebarOpen && (
         <div
-          className="position-fixed bg-dark text-white w-100"
-          style={{
-            top: "90px", // Adjust based on navbar height
-            height: "20vh", // Sidebar occupies 20% of the viewport height
-            overflow: "hidden", // Prevent unnecessary scrollbars
-            display: "flex",
-            flexWrap: "wrap",
-            alignItems: "center", // Center items vertically
-            justifyContent: "space-around", // Distribute items horizontally
-            padding: "10px 20px",
-          }}
+          className="custom-sidebar w-100"
+          // style={{
+          //   top: "90px", // Adjust based on navbar height
+          //   height: "20vh", // Sidebar occupies 20% of the viewport height
+          //   overflow: "hidden", // Prevent unnecessary scrollbars
+          //   display: "flex",
+          //   flexWrap: "wrap",
+          //   alignItems: "center", // Center items vertically
+          //   justifyContent: "space-around", // Distribute items horizontally
+          //   padding: "10px 20px",
+          // }}
         >
           {/* Home Icon with Link */}
           {sideBarItems.map((item, index) => (
@@ -163,14 +180,6 @@ export default function BNavBar() {
       )}
 
       {/* Add styling for active links */}
-      <style>
-        {`
-          .active-link {
-            color: yellow; /* Active link color */
-            font-weight: bold;
-          }
-        `}
-      </style>
     </>
   );
 }

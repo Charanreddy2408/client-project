@@ -29,13 +29,10 @@ export default function Favourites() {
   useEffect(() => {
     const items = localStorage.getItem("financeItems");
     const parsedItems = JSON.parse(items);
-    console.log(mostUsedItems?.length, "mostUsedItems", parsedItems?.length);
-    console.log(isRemovedState, "isRemovedState");
+
     if (mostUsedItems?.length > (parsedItems?.length || 0)) {
-      console.log(mostUsedItems, "latest");
       localStorage.setItem("financeItems", JSON.stringify(mostUsedItems)); // Save to localStorage immediately after update
     } else if (isRemovedState) {
-      console.log("enter");
       localStorage.setItem("financeItems", JSON.stringify(mostUsedItems)); // Save to localStorage immediately
     }
   }, [mostUsedItems?.length, isRemovedState]); // Trigger when mostUsedItems changes

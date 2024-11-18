@@ -8,11 +8,21 @@ import { useNavigate } from "react-router-dom";
 import { updateMostUsedItems } from "../Redux/dashBoardSlice";
 import { useDispatch } from "react-redux";
 import { useEffect } from "react";
+import useFetchData from "../hooks/useFetchData";
 export default function BDashBoard() {
   const { user, isAuthenticated, isLoading } = useAuth0();
   const [financeCards, setFinanceItems] = React.useState([]);
   const [facilitiesCards, setFacilitiesItems] = React.useState([]);
   const [humanResourcesCards, setHumanResourcesItems] = React.useState([]);
+  // const { data, fetchData } = useFetchData(
+  //   "https://jsonplaceholder.typicode.com/posts",
+  //   {
+  //     method: "GET",
+  //     headers: {
+  //       "Content-Type": "application/json",
+  //     },
+  //   }
+  // );
   const [showSections, setShowSections] = React.useState({
     finance: true,
     facilities: true,
@@ -61,6 +71,12 @@ export default function BDashBoard() {
     setHumanResourcesItems(humanResources);
   }, []);
 
+  //dummy fetch
+  // useEffect(() => {
+  //   fetchData();
+  //   dispatch(setFacilitiesItems(data));
+  // }, []);
+
   useEffect(() => {
     const sections = {
       facilities: { items: facilitiesItems, set: setFacilitiesItems },
@@ -100,32 +116,31 @@ export default function BDashBoard() {
         maxHeight: "calc(100vh - 60px)",
         gap: "5px",
       }}
-      className="d-flex flex-column flex-lg-row text-white w-100"
+      className="d-flex flex-column flex-lg-row bg-black text-white w-100 overflow-auto"
     >
       {/* home */}
       <div
-        style={{
-          overflowY: "auto",
-          maxWidth: !notificationIsOpen ? "80%" : "100%",
-        }}
-        className="container py-4 w-100 w-md-75"
+        // style={{
+        //   overflowY: "auto",
+        //   maxWidth: !notificationIsOpen ? "80%" : "100%",
+        // }}
+        className={`container py-4 w-100 ${
+          !notificationIsOpen ? "w-md-80" : "w-100"
+        } overflow-auto`}
       >
         <div
           style={{
             background: "transparent",
             backgroundRepeat: "no-repeat",
             backgroundSize: "cover",
-            // backgroundImage: 'url("/banner.jpeg")',
+            backgroundImage: 'url("/Mask group.png")',
           }}
-          className="row mb-5 border border-card_border justify-content-start"
+          className="row mb-5 title border border-card_border justify-content-start bg-transparent bg-cover bg-no-repeat"
         >
-          <div
-            className="py-2 shadow rounded d-flex flex-column flex-md-row justify-content-start align-items-center w-100"
-            style={{ marginTop: "30px" }}
-          >
+          <div className="py-2 shadow rounded d-flex flex-column flex-md-row justify-content-start align-items-center w-100 mt-3">
             {/* Circle with initials */}
             <div
-              className="d-flex mb-2 justify-content-center align-items-center text-white rounded-circle"
+              className="d-flex mb-2 justify-content-center align-items-center "
               style={{
                 minWidth: "80px", // Default width for small screens
                 height: "80px", // Default height for small screens
@@ -137,13 +152,13 @@ export default function BDashBoard() {
                 <span className="loader"></span>
               ) : (
                 <img
-                  className="rounded-circle"
-                  style={{
-                    width: "100%",
-                    height: "100%",
-                    objectFit: "cover", // Ensures the image fills the circle proportionally
-                  }}
-                  src={user.picture}
+                  className="rounded-circle w-100 h-100 object-fit-cover"
+                  // style={{
+                  //   width: "100%",
+                  //   height: "100%",
+                  //   objectFit: "cover", // Ensures the image fills the circle proportionally
+                  // }}
+                  src={user?.picture}
                   alt="user"
                 />
               )}
@@ -151,20 +166,15 @@ export default function BDashBoard() {
 
             {/* Rest of the content */}
             <div className="py-4 px-3  text-md-start d-flex flex-column justify-content-center align-items-center">
-              <h1
-                style={{
-                  fontSize: "24px",
-                }}
-                className="text-white"
-              >
+              <h1 className="text-white fs-4">
                 Hello {user?.name}, Goodmorning!
               </h1>
               <p
-                style={{
-                  fontSize: "20px",
-                  color: "#5c5c5c",
-                }}
-                className=""
+                // style={{
+                //   fontSize: "20px",
+                //   color: "#5c5c5c",
+                // }}
+                className="bg-colour text-muted fs-5"
               >
                 Your personalized dashboard. Manage your work seamlessly.
               </p>
@@ -179,14 +189,15 @@ export default function BDashBoard() {
               <div className="d-flex justify-content-between align-items-center mb-3">
                 <h2 className="text-white text-start fs-5">My Favorites</h2>
                 <button
-                  style={{
-                    backgroundColor: "#3e4352",
-                    border: "none",
-                    color: "white",
-                    padding: "10px",
-                    borderRadius: "5px",
-                    maxWidth: "150px",
-                  }}
+                  className="custom-button"
+                  // style={{
+                  //   backgroundColor: "#3e4352",
+                  //   border: "none",
+                  //   color: "white",
+                  //   padding: "10px",
+                  //   borderRadius: "5px",
+                  //   maxWidth: "150px",
+                  // }}
                   onClick={() => navigate("/home/Favourites")} // Using an arrow function to call Navigate
                 >
                   Add +
@@ -267,26 +278,26 @@ export default function BDashBoard() {
             {/* latest news*/}
 
             <div
-              style={{
-                display: "flex",
-                gap: "10px",
-                overflowX: "auto",
-                flexDirection: "column",
-                marginTop: "20px",
-                justifyContent: "start",
-                alignItems: "start",
-              }}
-              className="laest news"
+              // style={{
+              //   display: "flex",
+              //   gap: "10px",
+              //   overflowX: "auto",
+              //   flexDirection: "column",
+              //   marginTop: "20px",
+              //   justifyContent: "start",
+              //   alignItems: "start",
+              // }}
+              className="d-flex flex-column gap-2 overflow-auto mt-3 justify-content-start align-items-start laest news"
             >
               <h4>Latest News</h4>
               <div
-                style={{
-                  display: "flex",
-                  width: "100%",
-                  gap: "10px",
-                  flexWrap: "wrap",
-                }}
-                className="latestNewsWrapper"
+                // style={{
+                //   display: "flex",
+                //   width: "100%",
+                //   gap: "10px",
+                //   flexWrap: "wrap",
+                // }}
+                className="d-flex w-100 flex-wrap gap-2 latestNewsWrapper"
               >
                 <MemoizedCarousel
                   title={events.Title}

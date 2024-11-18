@@ -20,13 +20,9 @@ export default function BSideBar() {
 
   return (
     <div
-      className={`d-none d-lg-flex flex-column justify-content-between  sidebar-container position-sticky top-0 bottom-0 left-0 text-white py-4 ${
+      className={`d-none bg-sidebar-bg d-lg-flex flex-column justify-content-between  sidebar-container position-sticky top-0  bottom-0 text-white py-4 ${
         isOpen ? "open" : "closed"
       }`}
-      style={{
-        zIndex: 9,
-        backgroundColor: "#141414",
-      }}
     >
       <ul className=" px-2 list-unstyled">
         {sidebarItems.map((item, index) => (
@@ -36,17 +32,12 @@ export default function BSideBar() {
             onClick={() => navigate(item.redirect)}
             className={`d-flex align-items-center  mb-4 ${
               isOpen ? "" : "justify-content-center"
-            } ${
-              isActive(item.redirect)
-                ? "bg-dark text-light "
-                : ""
-            }`}
+            } ${isActive(item.redirect) ? "bg-dark text-light " : ""}`}
           >
             <img
               src={item.icon}
               alt={item.name}
-              className="fs-4"
-              style={{ cursor: "pointer" }}
+              className="fs-4 cursor-pointer"
               title={item.name} // Tooltip shows the name of the item
             />
 
@@ -63,10 +54,9 @@ export default function BSideBar() {
       </ul>
       <button
         style={{
-          right: isOpen ? "-7%" : "-15%",
-          backgroundColor: "#141414",
+          right: isOpen ? "7%" : "-15%",
         }}
-        className="  text-white mb-2  w-5 h-5 d-flex align-items-center justify-content-center border-0"
+        className=" bg-sidebar-bg  text-white mb-2  w-5 h-5 d-flex align-items-center justify-content-center border-0"
         onClick={toggleSidebar}
       >
         {!isOpen ? (
